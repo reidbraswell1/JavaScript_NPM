@@ -1,0 +1,14 @@
+{
+  "name": "javascript_npm",
+  "version": "1.0.0",
+  "description": "My NPM App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Reid Braswell",
+  "license": "MIT",
+  "dependencies": {
+    "dayjs": "^1.10.7"
+  }
+}
