@@ -11,6 +11,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 35%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#heading {
+    text-align: center;
 }
 
 #exercise-form {
@@ -36,4 +43,7 @@ h4 {
 .submit {
     margin-top: 3vh;
     margin-bottom: 5vh;
+}
+
+#exercise-description {
 }
