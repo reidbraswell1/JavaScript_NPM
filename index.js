@@ -5,8 +5,8 @@ dayjs('2018-08-08'); // parse
 let myDate = dayjs().format('YYYY-MM-DDTHH:mm:ss A'); // display
 console.log(`The Current Date is ${myDate}`);
 
-var http = require('http');
-var fs = require('fs');
+let http = require('http');
+let fs = require('fs');
 function onRequest(request, response) {
     response.writeHead(200, {'Content-Type': 'text/html'});
     fs.readFile('./index.html', null, function(error, data) {
