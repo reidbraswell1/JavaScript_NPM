@@ -49,11 +49,14 @@ app.get("/index", function (req, res) {
 });
 app.post("/process_post", urlencodedParser, function (req, res) {
   // Prepare output in JSON format
-  console.log(req.body.date);
-  response = {
-    first_name: req.body.first_name,
-    last_name: req.body.last_name,
-  };
+  res.status(200);
+  let myDate = dayjs(`${req.body.date}T${req.body.time}`,'YYYY-MM-DDTHH:MM');
+  res.render("response", {
+    title: "Response",
+    date: myDate.format("MM-DD-YYYY"),
+    time: myDate.format("hh:mm:ss A"),
+  })
+  console.log(req.body.time);
 })
 app.use(function(req,res){
   res.status(404);
