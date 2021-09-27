@@ -53,7 +53,7 @@ app.post("/process_post", urlencodedParser, function (req, res) {
   let myDate = dayjs(`${req.body.date}T${req.body.time}`,'YYYY-MM-DDTHH:MM');
   res.render("response", {
     title: "Response",
-    date: myDate.format("MM-DD-YYYY"),
+    date: myDate.format("MM-DD-YYYY (ddd)"),
     time: myDate.format("hh:mm:ss A"),
   })
   console.log(req.body.time);
