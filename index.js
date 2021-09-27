@@ -33,7 +33,7 @@ http.createServer(onRequest).listen(5000);
 // View engine setup
 app.set("view engine", "ejs");
 app.use("/styles", express.static(__dirname + "/styles"));
-app.get("/", function (req, res) {
+app.get("/index", function (req, res) {
   try {
     res.status(200);
     res.render("index", {
@@ -49,9 +49,17 @@ app.get("/", function (req, res) {
 });
 app.post("/process_post", urlencodedParser, function (req, res) {
   // Prepare output in JSON format
+  console.log(req.body.date);
   response = {
     first_name: req.body.first_name,
     last_name: req.body.last_name,
   };
+})
+app.use(function(req,res){
+  res.status(404);
+  res.render("invalidUrlPath", {
+    title: "Invalid URL",
+    message: `URL Not Found ${req.url}`,
+  });
 });
 app.listen(3000, () => console.log("Server listening on port 3000"));
