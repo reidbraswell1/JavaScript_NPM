@@ -1,38 +1,24 @@
 console.log("---Begin start.js---");
-const express = require("express");
+// Modules
+// dayjs
 const dayjs = require("dayjs");
+// express
+const express = require("express");
+// body-parser
+const bodyParser = require('body-parser');
 
 // Express
 const app = express();
-const bodyParser = require('body-parser');
+
 // Create application/x-www-form-urlencoded parser  
-let urlencodedParser = bodyParser.urlencoded({ extended: false });  
+let urlencodedParser = bodyParser.urlencoded({ extended: false, type: "urlencoded" });
 
-dayjs("2018-08-08"); // parse
-
-let myDate = dayjs().format("YYYY-MM-DDTHH:mm:ss A"); // display
-console.log(`The Current Date is ${myDate}`);
-
-/*
-let http = require('http');
-let fs = require('fs');
-function onRequest(request, response) {
-    response.writeHead(200, {'Content-Type': 'text/html'});
-    fs.readFile('./index.html', null, function(error, data) {
-        if (error) {
-            response.writeHead(404);
-            response.write('File not found!');
-        } else {
-            response.write(data);
-        }
-        response.end();
-    });
-}
-http.createServer(onRequest).listen(5000);
-*/
-// View engine setup
+// View engine setup specify the view engine for HTML pages
 app.set("view engine", "ejs");
+
+// Set a static directory for HTML pages to refer to project specific style sheets
 app.use("/styles", express.static(__dirname + "/styles"));
+// Respond to GET request at url "/index"
 app.get("/index", function (req, res) {
   try {
     res.status(200);
@@ -47,17 +33,21 @@ app.get("/index", function (req, res) {
     );
   }
 });
-app.post("/process_post", urlencodedParser, function (req, res) {
-  // Prepare output in JSON format
+// Respond to POST request at url "/process-form"
+app.post("/process-form", urlencodedParser, function (req, res) {
   res.status(200);
   let myDate = dayjs(`${req.body.date}T${req.body.time}`,'YYYY-MM-DDTHH:MM');
+  let formattedDate = myDate.format("MM-DD-YYYY (ddd)  MMMM DD, YYYY");
+  let formattedTime = myDate.format("hh:mm:ss A");
+  console.log(`Date = ${req.body.date}`);
+  console.log(`Time = ${req.body.time}`);
   res.render("response", {
     title: "Response",
-    date: myDate.format("MM-DD-YYYY (ddd)"),
-    time: myDate.format("hh:mm:ss A"),
+    date: formattedDate,
+    time: formattedTime,
   })
-  console.log(req.body.time);
-})
+});
+// Render a html page for an invalid url path
 app.use(function(req,res){
   res.status(404);
   res.render("invalidUrlPath", {
@@ -65,4 +55,5 @@ app.use(function(req,res){
     message: `URL Not Found ${req.url}`,
   });
 });
+// Listen for connections on port 3000
 app.listen(3000, () => console.log("Server listening on port 3000"));
