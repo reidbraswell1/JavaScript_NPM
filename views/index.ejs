@@ -1,42 +1,47 @@
 <!DOCTYPE html>
 <html id="html" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title><%= title %></title>
-  <link rel="stylesheet" href="styles/style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet" />
-</head>
-
-<body id="body">
-  <main id="main">
-    <div>
-      <h1 id="heading"><%= heading %></h1>
-      <form id="exercise-form" action="http://127.0.0.1:3000/process_post" method="POST">
-        <h4>Exercise Form</h4>
-        <label for="date" id="date-label" class="labels">Date</label>
-        <input type="date" id="date" name="date" class="inputs" required />
-        <label for="time" id="time-label" class="labels">Time</label>
-        <input type="time" id="time" name="time" class="inputs" required />
-        <button type="submit" class="submit">Submit</button>
-      </form>
-      <p id="exercise-description">In this assignment <code>npm</code> will be used to add node modules
-        <code>dayjs</code>,
-        <code>express</code>,
-        <code>express-handlebars</code> and <code>pug</code>. The index page will be displayed with root url "/"
-        <code>GET</code>.
-        The form will <code>POST</code> a
-        date and time that will be posted via the url "/form-post". <code>ejs</code> will be used to dynamically display
-        the date
-        and time formatted with the <code>dayjs</code> module.
-      </p>
-    </div>
-  </main>
-  <script src="script.js"></script>
-</body>
-
+  <body id="body">
+    <main id="main">
+      <div>
+        <h1 id="heading"><%= heading %></h1>
+        <form
+          id="exercise-form"
+          action="http://127.0.0.1:3000/process-form"
+          method="POST"
+        >
+          <h4>Exercise Form</h4>
+          <label for="date" id="date-label" class="labels">Date</label>
+          <input type="date" id="date" name="date" class="inputs" required />
+          <label for="time" id="time-label" class="labels">Time</label>
+          <input type="time" id="time" name="time" class="inputs" required />
+          <button type="submit" class="submit">Submit</button>
+        </form>
+        <p id="exercise-description">
+          In this assignment <code>npm</code> will be used to add node modules
+          <code>dayjs</code>, <code>express</code>,<code>body-parser</code> and
+          <code>ejs</code>
+          . The index page will be displayed with root url "/index"
+          <code>GET</code>. The form will <code>POST</code> a date and time that
+          will be posted via the url "/process-form". <code>ejs</code> will be
+          used to dynamically display the date and time formatted with the
+          <code>dayjs</code> module.
+        </p>
+      </div>
+    </main>
+    <script src="script.js"></script>
+  </body>
 </html>
