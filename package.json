@@ -1,5 +1,6 @@
 {
   "name": "javascript_npm",
+  "type": "module",
   "version": "1.0.0",
   "description": "My NPM and Dayjs App",
   "main": "index.js",
