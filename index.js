@@ -1,11 +1,17 @@
 console.log("---Begin start.js---");
 // Modules
 // dayjs
-const dayjs = require("dayjs");
+//const dayjs = require("dayjs");
+import dayjs from 'dayjs';
 // express
-const express = require("express");
+//const express = require("express");
+import express from 'express';
 // body-parser
-const bodyParser = require('body-parser');
+//const bodyParser = require('body-parser');
+import bodyParser from 'body-parser';
+
+import path from 'path';
+const __dirname = path.dirname(new URL(import.meta.url).pathname);
 
 // Express
 const app = express();
