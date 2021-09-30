@@ -3,7 +3,8 @@
   "type": "module",
   "version": "1.0.0",
   "description": "My NPM and Dayjs App",
-  "main": "index.js",
+  "main": "src/index.js",
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,7 +14,8 @@
     "body-parser": "^1.19.0",
     "dayjs": "^1.10.7",
     "ejs": "^3.1.6",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
     "webpack": "^5.55.0",
