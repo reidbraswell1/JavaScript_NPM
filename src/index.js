@@ -26,7 +26,7 @@ let urlencodedParser = bodyParser.urlencoded({ extended: false, type: "urlencode
 app.set("view engine", "ejs");
 
 // Set a static directory for HTML pages to refer to project specific style sheets
-app.use("/styles", express.static(__dirname + "/styles"));
+app.use("/styles", express.static(__dirname + "../../styles"));
 // Respond to GET request at url "/index"
 app.get("/index", function (req, res) {
   try {
