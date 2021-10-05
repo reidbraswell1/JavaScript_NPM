@@ -1,4 +1,4 @@
-console.log("---Begin start.js---");
+console.log("---Begin index.js---");
 // Modules
 // Import Method
 import dayjs from 'dayjs';
