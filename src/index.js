@@ -5,6 +5,8 @@ import dayjs from 'dayjs';
 import express from 'express';
 import bodyParser from 'body-parser';
 import path from 'path';
+//import ejs from 'ejs';
+const ejs = require("ejs").__express;
 
 // Require Method
 //const dayjs = require("dayjs");
@@ -21,10 +23,11 @@ const app = express();
 let urlencodedParser = bodyParser.urlencoded({ extended: false, type: "urlencoded" });
 
 // View engine setup specify the view engine for HTML pages
-app.set("view engine", "ejs");
+app.set('view engine', 'ejs');
+app.engine('ejs', ejs);
 
 // Set a static directory for HTML pages to refer to project specific style sheets
-app.use("/styles", express.static(__dirname + "../../styles"));
+app.use("/styles", express.static("styles"));
 // Respond to GET request at url "/index"
 app.get("/index", function (req, res) {
   try {
