@@ -5,3 +5,6 @@ node_modules/*
 
 #Ignore lock files
 package-lock.json
+
+#Ignore dist directory
+dist/*
