@@ -13,8 +13,10 @@ const ejs = require("ejs").__express;
 //const express = require("express");
 //const bodyParser = require('body-parser');
 
+/*
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
 console.log(`__dirname=${__dirname}`);
+*/
 
 // Express
 const app = express();
