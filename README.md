@@ -18,8 +18,8 @@ All pages wll be using `ejs` (Embeddd Java Script) as a template engine. This wi
 
 1. Run `npm install` after cloning the project.
 1. Run `npm run build` to create a ditributable.
-1. Copy the ziped distributable file and unzip into a new directory of your choice.
-1. Use `npm install` to install all of the dependencies for the project.
+1. Copy the ziped distributable file and unzip into a new directory of your choice. For example: `unzip dist.zip -d MyApp`
+1. Switch to the newly created directory and run `npm install` to install all of the dependencies for the project.
 1. Start the server with `npm start`
 1. The server runs on port 3000 and responds to `http://localhost:3000/index`
 
