@@ -1,5 +1,8 @@
 const path = require("path");
 const ZipPlugin = require("zip-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
+const { CleanWebpackPlugin }  = require('clean-webpack-plugin');
+
 
 module.exports = {
   mode: "development",
@@ -11,14 +14,23 @@ module.exports = {
     publicPath: "/",
   },
   plugins: [
+    new CopyPlugin({
+      patterns: [
+        { from: "views", to: "views" },
+        { from: "styles", to: "styles" },
+        { from: "package.json", to: "" },
+        { from: "webpack.config.js", to: "" }
+      ],
+    }),
+    new CleanWebpackPlugin(),
     new ZipPlugin({
       // OPTIONAL: defaults to the Webpack output path (above)
       // can be relative (to Webpack output path) or absolute
-      path: "zip",
+      path: "",
 
       // OPTIONAL: defaults to the Webpack output filename (above) or,
       // if not present, the basename of the path
-      filename: "main",
+      filename: "dist",
 
       // OPTIONAL: defaults to 'zip'
       // the file extension to use instead of 'zip'
@@ -33,16 +45,10 @@ module.exports = {
       pathMapper: function (assetPath) {
         console.log(`assetPath=${assetPath}`);
         // put all pngs in an `images` subdir
-        if (assetPath.endsWith(".ejs"))
+        if (assetPath.match("main.js"))
           return path.join(
             path.dirname(assetPath),
-            "views",
-            path.basename(assetPath)
-          );
-        if (assetPath.endsWith(".css"))
-          return path.join(
-            path.dirname(assetPath),
-            "styles",
+            "dist",
             path.basename(assetPath)
           );
         return assetPath;
@@ -50,7 +56,7 @@ module.exports = {
 
       // OPTIONAL: defaults to including everything
       // can be a string, a RegExp, or an array of strings and RegExps
-      include: [/\.js$/],
+    include: [/\.js$/,/\.ejs$/,/\.css$/,/\.json$/,"webpack.config.js"],
 
       // OPTIONAL: defaults to excluding nothing
       // can be a string, a RegExp, or an array of strings and RegExps
